@@ -28,24 +28,24 @@ const serverlessConfiguration: AWS = {
     individually: false,
   },
   functions: {
-    createTODO: {
-      handler: 'src/functions/create-todo.handler',
+    createTodo: {
+      handler: 'src/functions/createTodo.handler',
       events: [
         {
           http: {
-            path: 'create-todo/{user_id}',
+            path: 'createTodo/{user_id}',
             method: 'post',
             cors: true,
           },
         },
       ],
     },
-    listTODOS: {
-      handler: 'src/functions/list-todos.handler',
+    listTodos: {
+      handler: 'src/functions/listTodos.handler',
       events: [
         {
           http: {
-            path: 'list-todos/{user_id}',
+            path: 'listTodos/{user_id}',
             method: 'get',
             cors: true,
           },

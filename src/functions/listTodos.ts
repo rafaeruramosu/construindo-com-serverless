@@ -1,8 +1,8 @@
-import { APIGatewayProxyHandler } from "aws-lambda";
+import { APIGatewayProxyHandler } from 'aws-lambda';
 
-import { document } from "../utils/dynamodbClient";
+import { document } from '../utils/dynamodbClient';
 
-export const handle: APIGatewayProxyHandler = async (event) => {
+export const handler: APIGatewayProxyHandler = async (event) => {
     const { user_id } = event.pathParameters;
 
     const response = await document
@@ -29,7 +29,7 @@ export const handle: APIGatewayProxyHandler = async (event) => {
     return {
         statusCode: 400,
         body: JSON.stringify({
-            message: "There is not TODOS for this user.",
+            message: 'There is not TODOS for this user.',
         })
     };
 }

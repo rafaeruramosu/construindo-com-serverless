@@ -1,7 +1,7 @@
-import { APIGatewayProxyHandler } from "aws-lambda";
+import { APIGatewayProxyHandler } from 'aws-lambda';
 import { v4 as uuid } from 'uuid';
 
-import { document } from "../utils/dynamodbClient";
+import { document } from '../utils/dynamodbClient';
 
 type CreateTODO = {
     title: string;
@@ -16,7 +16,7 @@ type Template = {
     deadline: string;
 }
 
-export const handle: APIGatewayProxyHandler = async (event) => {
+export const handler: APIGatewayProxyHandler = async (event) => {
     const { user_id } = event.pathParameters;
     const { title, deadline } = JSON.parse(event.body) as CreateTODO;
 
@@ -31,14 +31,14 @@ export const handle: APIGatewayProxyHandler = async (event) => {
     }
     
     await document.put({
-        TableName: "todos",
+        TableName: 'todos',
         Item: data
     }).promise();
     
     return {
         statusCode: 201,
         body: JSON.stringify({
-            message: "To-do created successfully.",
+            message: 'To-do created successfully.',
             data
         }),
     };
